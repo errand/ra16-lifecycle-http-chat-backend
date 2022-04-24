@@ -1,6 +1,6 @@
 const Note = require('./Note');
 
-class NotesController {
+class ChatController {
   constructor() {
     this.notes = [];
   }
@@ -10,7 +10,8 @@ class NotesController {
   }
 
   createNote(object) {
-    const post = new Note(object);
+    const obj = JSON.parse(object)
+    const post = new Note(obj.user, obj.text);
     this.notes.push(post);
     return post;
   }
@@ -24,4 +25,4 @@ class NotesController {
   }
 }
 
-module.exports = NotesController;
+module.exports = ChatController;

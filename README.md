@@ -1,4 +1,4 @@
-# NotesController Server with Websockets
+# ChatController Server with Websockets
 
 ## Install
 `npm i`

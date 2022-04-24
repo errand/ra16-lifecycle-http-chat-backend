@@ -8,9 +8,9 @@ const Router = require('koa-router');
 
 const router = new Router();
 
-const NotesController = require('./src/NotesController');
+const ChatController = require('./src/ChatController');
 
-const ctrl = new NotesController();
+const ctrl = new ChatController();
 
 const app = new Koa();
 app.use(cors());
@@ -60,22 +60,21 @@ app.use(async (ctx, next) => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-router.get('/notes', async (ctx) => {
+router.get('/chat', async (ctx) => {
   //console.log(ctx.query)
   const result = ctrl.getAllNotes();
   ctx.response.body = result;
   //console.log(ctx.response.body);
 });
 
-router.post('/notes', async (ctx) => {
+router.post('/chat', async (ctx) => {
   const object = ctx.request.body;
-  //console.log('object', object)
   const result = ctrl.createNote(object);
   ctx.response.body = result;
   //console.log(ctx.request.body);
 });
 
-router.delete('/notes/:id', async (ctx) => {
+router.delete('/chat/:id', async (ctx) => {
   const result = ctrl.deleteNote(ctx.params.id);
   ctx.response.body = result;
 });
